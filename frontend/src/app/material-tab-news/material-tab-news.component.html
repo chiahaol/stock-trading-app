@@ -1,0 +1,34 @@
+<div id="newsContent" class="row" *ngIf="news">
+    <div class="newsCard col-12 col-md-6" *ngFor="let newsPost of news.topNews | slice:0:20;">
+        <ng-template #newsModal let-modal>
+            <div class="modal-header">
+              <div class="modal-title" id="modal-basic-title">
+                <div>{{newsPost.source}}</div>
+                <div class="postDate">{{getDateTime(newsPost.datetime) | date:'MMMM dd, yyyy'}}</div>
+              </div>
+              <button class="closeBtn" aria-label="Close" (click)="modal.dismiss('Closed without action')"><i class="bi bi-x cancel-icon"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="newsHeader">{{newsPost.headline}}</div>
+                <div class="newDescription">{{newsPost.summary}}</div>
+                <div><a class="moreDetails">For more details click </a><a href="{{newsPost.url}}" target="_blank">here</a></div>
+                <div class="shareBlock">
+                    <div>Share</div>
+                    <div class="shareBtns">
+                        <a class="twitter-share-button"
+                            data-href="https://twitter.com/intent/tweet?text={{newsPost.headline}}%0A&url={{newsPost.url}}"
+                            target="_blank">
+                            <img class="share-logo" src="../../assets/images/twitter-logo.png">
+                        </a>
+                        <div class="fb-share-button" data-layout="button_count" data-size="small">
+                            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?text={{newsPost.headline}}&u={{newsPost.url}}" class="fb-xfbml-parse-ignore"><img class="share-logo" src="../../assets/images/fb-logo.png"></a></div>
+                        </div>
+                </div>
+            </div>
+        </ng-template>
+        <div class="newsBlock" (click)="openModal(newsModal)">
+            <img class="newsImage" src="{{newsPost.image}}">
+            <div class="newsTitle">{{newsPost.headline}}</div>
+        </div>
+    </div>    
+</div>

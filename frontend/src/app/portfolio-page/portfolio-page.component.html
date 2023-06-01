@@ -1,0 +1,73 @@
+<div id="portfolioPage" class="container">
+    <div class="refreshingSpinner" *ngIf="isRefreshing"><mat-spinner diameter="50"></mat-spinner></div>
+    <ngb-alert #alert class="buySuccessAlert col-11 col-sm-8" *ngIf="buySuccess" type="success" (closed)="buySuccess = false;">
+        {{stock}} bought successfully.
+    </ngb-alert>
+    <ngb-alert  class="sellSuccessAlert col-11 col-sm-8" *ngIf="sellSuccess" type="success" (closed)="sellSuccess = false;">
+        {{stock}} sold successfully.
+    </ngb-alert>
+    <div id="cardArea" *ngIf="!isRefreshing">
+        <div id="portfolioText" class="col-11 col-sm-8">My Portfolio</div>
+        <div id="currentMoneyText" class="col-11 col-sm-8">Money in Wallet: ${{getCurrentMoney() | number:'1.2-2'}}</div>
+        <ngb-alert  class="emptyAlert col-11 col-sm-8" *ngIf="portfolio.length == 0" [dismissible]="false">
+            Currently you don't have any stock.
+        </ngb-alert>
+        <div id="cardList" class="col-11 col-sm-8">
+            <div class="portfolioObj" *ngFor="let portfolioObj of portfolio">
+                <div class="stockName"><a class="ticker">{{portfolioObj.symbol}} </a><a class="name">{{portfolioObj.name}}</a></div>
+                <div class="portfolioContent row">
+                    <div class="avgStats col-12 col-lg-6">
+                        <div class="stats">Quantity:<a class="val">{{portfolioObj.quantity | number:'1.2-2'}}</a></div>
+                        <div class="stats">Avg. Cost / Share:<a class="val">{{portfolioObj.totalCost / portfolioObj.quantity| number:'1.2-2'}}</a></div>
+                        <div class="stats">Total Cost:<a class="val">{{portfolioObj.totalCost | number:'1.2-2'}}</a></div>
+                    </div>
+                    <div class="currentStats col-12 col-lg-6">
+                        <div class="stats">
+                            Change:
+                            <a class="val" [ngClass]="{'positive': portfolioObj.c * portfolioObj.quantity > portfolioObj.totalCost, 'negative': portfolioObj.c * portfolioObj.quantity < portfolioObj.totalCost}">
+                                <i class="bi" [ngClass]="{'bi-caret-up-fill': portfolioObj.c * portfolioObj.quantity > portfolioObj.totalCost, 'bi-caret-down-fill': portfolioObj.c * portfolioObj.quantity < portfolioObj.totalCost}"></i>
+                                {{portfolioObj.c - portfolioObj.totalCost / portfolioObj.quantity | number:'1.2-2'}}
+                            </a>
+                        </div>
+                        <div class="stats">Current Price:<a class="val" [ngClass]="{'positive': portfolioObj.c * portfolioObj.quantity > portfolioObj.totalCost, 'negative': portfolioObj.c * portfolioObj.quantity < portfolioObj.totalCost}">{{portfolioObj.c | number:'1.2-2'}}</a></div>
+                        <div class="stats">Market Value:<a class="val" [ngClass]="{'positive': portfolioObj.c * portfolioObj.quantity > portfolioObj.totalCost, 'negative': portfolioObj.c * portfolioObj.quantity < portfolioObj.totalCost}">{{portfolioObj.c * portfolioObj.quantity | number:'1.2-2'}}</a></div>
+                    </div>
+                </div>
+                <div class="buy-sell-btn">
+                    <ng-template #portfolioModal let-modal>
+                        <div class="modal-header">
+                          <div class="modal-title" id="modal-basic-title">{{portfolioObj.symbol}}</div>
+                          <button class="closeBtn" aria-label="Close" (click)="modalInputValue = 0; modal.dismiss('Closed without action');"><i class="bi bi-x cancel-icon"></i></button>
+                        </div>
+                        <div class="modal-body">
+                          <div>Current Price: {{portfolioObj.c | number:'1.2-2'}}</div>
+                          <div>Money in Wallet: ${{getCurrentMoney() | number:'1.2-2'}}</div>
+                          <form (submit)="$event.preventDefault()">
+                            <div class="mb-3 quantity-form">
+                              <label class="quantity-label" for="stockQuantity">Quantity</label>
+                              <div class="input-group">
+                                <input [(ngModel)]="modalInputValue" name="modalInputValue" class="form-control col-6" [value]="0" type="number">
+                              </div>
+                            </div>
+                          </form>
+                          <div class="modal-error" *ngIf="portfolioModalFlag == 1 && modalInputValue > portfolioObj.quantity">You can't sell stocks taht you don't have!</div>
+                          <div class="modal-error" *ngIf="portfolioModalFlag == 0 && modalInputValue * portfolioObj.c > getCurrentMoney()">Not enough money in wallet!</div>
+                          <div class="modal-error" *ngIf="+modalInputValue <= 0">Quantity should be greater than 0!</div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="total-msg">Total: {{modalInputValue * portfolioObj.c | number:'1.2-2'}}</div>
+                            <button
+                                class="modalBtn"
+                                [disabled]="portfolioModalFlag ? !canSell(portfolioObj.quantity) : !canBuy(portfolioObj.c)"
+                                (click)="portfolioModalFlag ? sellStock(portfolioObj.symbol): buyStock(portfolioObj.symbol); modalInputValue = 0; modal.close('Finish');">
+                                {{portfolioModalFlag ? 'Sell' : 'Buy'}}
+                            </button>
+                        </div>
+                    </ng-template>
+                    <app-buy-sell-btn text="Buy" [backgroundColor]="'#007bff'" class="btn-buy" (click)="openModal(portfolioModal, 0)"></app-buy-sell-btn>
+                    <app-buy-sell-btn text="Sell" [backgroundColor]="'#dc3545'" class="btn-sell" (click)="openModal(portfolioModal, 1)"></app-buy-sell-btn> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

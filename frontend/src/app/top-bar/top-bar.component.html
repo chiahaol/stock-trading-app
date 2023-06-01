@@ -1,0 +1,20 @@
+<nav id="myTopBar" class="navbar navbar-expand-sm navbar-light">
+    <div class="navbar-brand my-nav-title">Stock Search</div>
+    <div class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon fk"></span>
+    </div>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul id="my-nav-items" class="navbar-nav">
+        <li class="nav-item" >
+          <a class="nav-link my-nav-link " [ngClass]="{'isSelected': currentPage == 'search'}" (click)="navigateToSearchPage()">Search</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link my-nav-link" [ngClass]="{'isSelected': currentPage == 'watchlist'}" (click)="navigateToWatchlistPage()">Watchlist</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link my-nav-link" [ngClass]="{'isSelected': currentPage == 'portfolio'}" (click)="navigateToPortfoliotPage()">Portfolio</a>
+        </li>
+      </ul>
+    </div>
+</nav>

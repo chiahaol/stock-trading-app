@@ -1,0 +1,179 @@
+#stockDetails {
+    text-align: center;
+}
+
+#stockDetailsContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+#companyInfo {
+    margin-left: 0;
+    margin-right: auto;
+    text-align: left;
+}
+
+#companyLogo {
+    text-align: center;
+}
+
+#companyPriceInfo {
+    margin-right: 0;
+    margin-left: auto;
+    text-align: right;
+}
+
+#tickerNStar {
+    display: flex;
+    flex-direction: row;
+}
+
+#companyTicker {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 5px; 
+}
+
+.myFavBtn {
+    font-size: 20px;
+    background-color: transparent;
+    border: none;
+    margin-left: 7px;
+}
+
+#companyName {
+    margin-top: 10px;
+    color: #6b747c;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#companyExchange {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: #868686;
+    font-size: 12px;
+}
+
+.buy-sell-btns {
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+}
+
+.btn-sell {
+    margin-left: 15px;
+}
+
+#lastPrice {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#change {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#timestamp {
+    margin-top: 5px;
+    font-size: 12px;
+    color: #868686;
+}
+
+#marketStatus {
+    margin-top: 30px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.positive {
+    color: #44a044;
+}
+
+.negative {
+    color: #fd0808;
+}
+
+.logo {
+    width: 90px;
+    height: auto;
+}
+
+.bi-star-fill {
+    color: #f9d509;
+}
+
+.modal-header {
+    font-size: 18px;
+}
+
+.modal-body {
+    margin-left: 15px;
+}
+
+.quantity-form {
+    display: flex;
+    margin-top: 5px;
+}
+
+.quantity-label {
+    margin: auto 10px auto auto;
+}
+
+
+.closeBtn {
+    color: #6b747c;
+    margin: 0 5px auto auto;
+    font-weight: 500;
+    background-color: transparent;
+    border: none;
+}
+
+.buySuccessAlert {
+    background-color: #d4edda;
+}
+
+.sellSuccessAlert {
+    background-color: #f8d7da;
+}
+
+.addToWatchlistSuccessAlert {
+    background-color: #d4edda;
+}
+
+.removedFromWatchlistSuccessAlert {
+    background-color: #f8d7da;
+}
+
+@media (max-width: 480px) {
+    .logo {
+        width: 60px;
+        height: auto;
+    }
+}
+
+.modalBtn {
+    border-radius: 3px;
+    border: none;
+    padding: 5px;
+    color: white;
+    width: 46px;
+    font-size: 12px;
+    background-color: #28a745;
+}
+
+.modalBtn:disabled {
+    opacity: 30%;
+}
+
+.modal-error {
+    color: red;
+}
+
+.total-msg {
+    margin: auto auto auto 0;
+}

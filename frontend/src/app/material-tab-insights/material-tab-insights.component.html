@@ -1,0 +1,44 @@
+<div id="insightTabContent" *ngIf="profile && recommendationChartData.length > 0 && socialSentimentChartData.length > 0 && earningsChartData.length > 0">
+    <div id="socialSentimentChart">
+        <div class="sentimentTitle col-12">Social Sentiments</div>
+        <table class="col-12 col-md-6">
+            <tr>
+                <th>{{profile.name}}</th>
+                <th>Reddit</th>
+                <th>Twitter</th>
+            </tr>
+            <tr>
+                <th>Total Mentions</th>
+                <td>{{socialSentimentChartData[0][0]}}</td>
+                <td>{{socialSentimentChartData[1][0]}}</td>
+            </tr>
+            <tr>
+                <th>Positive Mentions</th>
+                <td>{{socialSentimentChartData[0][1]}}</td>
+                <td>{{socialSentimentChartData[1][1]}}</td>
+            </tr>
+            <tr>
+                <th>Negative Mentions</th>
+                <td>{{socialSentimentChartData[0][2]}}</td>
+                <td>{{socialSentimentChartData[1][2]}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="twoCharts row"> 
+        <div id="recommendationChart" class="col-12 col-md-6">
+            <highcharts-chart
+                [Highcharts] = "highcharts" 
+                [options] = "recommendationChartOptions" 
+                style = "height: 400px; display: block;">
+            </highcharts-chart>
+        </div>
+        <div id="earningsChart" class="col-12 col-md-6">
+            <highcharts-chart
+                [Highcharts] = "highcharts" 
+                [options] = "earningsChartOptions" 
+                style = "height: 400px; display: block;">
+            </highcharts-chart>
+        </div>
+    </div>
+</div>
+

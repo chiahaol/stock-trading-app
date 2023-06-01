@@ -1,0 +1,25 @@
+<div id="watchlistPage" class="container">
+    <div id="cardArea">
+        <div id="watchlistText" class="col-11 col-sm-8">My Watchlist</div>
+        <ngb-alert  class="emptyAlert col-11 col-sm-8" *ngIf="watchlist.length == 0" [dismissible]="false">
+            Currently you don't have any stock in your watchlist.
+        </ngb-alert>
+        <div id="cardList" class="col-11 col-sm-8">
+            <app-cancellable-card *ngFor="let watchlistObj of watchlist" (click)="onClickWatchlistCard(watchlistObj.symbol)" (onClickNotify)="deleteWatchlistCard(watchlistObj.symbol)">
+                <div class="cardContent">
+                    <div class="cardName col-6">
+                        <div class="first-row">{{watchlistObj.symbol}}</div>
+                        <div class="second-row">{{watchlistObj.name}}</div>
+                    </div>
+                    <div class="cardPrice col-6">
+                        <div class="first-row" [ngClass]="watchlistObj.d >= 0 ? 'positive' : 'negative'">{{watchlistObj.c | number:'1.2-2'}}</div>
+                        <div class="second-row" [ngClass]="watchlistObj.d >= 0 ? 'positive' : 'negative'">
+                            <i class="bi" [ngClass]="watchlistObj.d >= 0 ? 'bi-caret-up-fill' : 'bi-caret-down-fill'"></i>
+                            {{watchlistObj.d | number:'1.2-2'}} ({{watchlistObj.dp | number:'1.2-2'}}%)
+                        </div>
+                    </div>
+                </div>
+            </app-cancellable-card>
+        </div>
+    </div>
+</div>

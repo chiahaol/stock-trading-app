@@ -1,0 +1,24 @@
+{
+  "name": "usc-csci571-hw8",
+  "description": "USC CSCI571 Web Technologies HW8 Node.js Server",
+  "version": "0.0.2",
+  "private": true,
+  "license": "Apache-2.0",
+  "author": "Chia-Hao Liu",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "test": "mocha --exit test/*.test.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "mocha": "^9.0.0",
+    "supertest": "^6.0.0"
+  }
+}

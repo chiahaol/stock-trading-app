@@ -1,0 +1,70 @@
+<div id="stockDetails" *ngIf="profile && quote">
+    <ngb-alert #alert class="buySuccessAlert" *ngIf="buySuccess" type="success" (closed)="buySuccess = false;">
+        {{profile.ticker}} bought successfully.
+    </ngb-alert>
+    <ngb-alert  class="sellSuccessAlert" *ngIf="sellSuccess" type="success" (closed)="sellSuccess = false;">
+        {{profile.ticker}} sold successfully.
+    </ngb-alert>
+    <ngb-alert  class="addToWatchlistSuccessAlert" *ngIf="addToWatchlistSuccess" type="success" (closed)="addToWatchlistSuccess = false;">
+        {{profile.ticker}} added to Watchlist.
+    </ngb-alert>
+    <ngb-alert  class="removedFromWatchlistSuccessAlert" *ngIf="removedFromWatchlistSuccess" type="success" (closed)="removedFromWatchlistSuccess = false;">
+        {{profile.ticker}} removed from Watchlist.
+    </ngb-alert>
+    <div id="stockDetailsContent" class="row">
+        <div id="companyInfo" class="col col-sm-4">
+            <div id="tickerNStar">
+                <div id="companyTicker">{{profile.ticker}}</div>
+                <button class="myFavBtn" (click)="updateWatchlistStatus()">
+                    <i class="bi myStar" [ngClass]="currentSymbolInWatchlist() ? 'bi-star-fill' : 'bi-star'"></i>
+                </button>
+            </div>
+            <div id="companyName">{{profile.name}}</div>
+            <div id="companyExchange">{{profile.exchange}}</div>
+            <div class="buy-sell-btns">
+                <ng-template #portfolioModal let-modal>
+                    <div class="modal-header">
+                      <div class="modal-title" id="modal-basic-title">{{profile.ticker}}</div>
+                      <button class="closeBtn" aria-label="Close" (click)="modal.dismiss('Closed without action')"><i class="bi bi-x cancel-icon"></i></button>
+                    </div>
+                    <div class="modal-body">
+                      <div>Current Price: {{quote.c | number:'1.2-2'}}</div>
+                      <div>Money in Wallet: ${{getCurrentMoney() | number:'1.2-2'}}</div>
+                      <form (submit)="$event.preventDefault()">
+                        <div class="mb-3 quantity-form">
+                          <label class="quantity-label" for="stockQuantity">Quantity</label>
+                          <div class="input-group">
+                            <input #transactionQuantity id="stockQuantity" class="form-control col-6" [value]="0" type="number">
+                          </div>
+                        </div>
+                      </form>
+                      <div class="modal-error" *ngIf="portfolioModalFlag == 1 && +transactionQuantity.value > getCurrentAmount()">You can't sell stocks taht you don't have!</div>
+                      <div class="modal-error" *ngIf="portfolioModalFlag == 0 && +transactionQuantity.value * quote.c > getCurrentMoney()">Not enough money in wallet!</div>
+                      <div class="modal-error" *ngIf="+transactionQuantity.value <= 0">Quantity should be greater than 0!</div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="total-msg">Total: {{+transactionQuantity.value * quote.c | number:'1.2-2'}}</div>
+                        <button
+                            class="modalBtn"
+                            [disabled]="portfolioModalFlag ? !canSell(+transactionQuantity.value) : !canBuy(+transactionQuantity.value)"
+                            (click)="portfolioModalFlag ? sellStock(+transactionQuantity.value): buyStock(+transactionQuantity.value); modal.close('Finish')">
+                            {{portfolioModalFlag ? 'Sell' : 'Buy'}}
+                        </button>
+                    </div>
+                </ng-template>
+                <app-buy-sell-btn text="Buy" [backgroundColor]="'#28a745'" class="btn-buy" (click)="openModal(portfolioModal, 0)"></app-buy-sell-btn>
+                <app-buy-sell-btn *ngIf="currentSymbolInPortfolio()" text="Sell" [backgroundColor]="'#dc3545'" class="btn-sell" (click)="openModal(portfolioModal, 1)"></app-buy-sell-btn> 
+            </div>
+        </div>
+        <div id="companyLogo" class="col-3 col-sm-4"><img class="logo" src="{{profile.logo}}"></div>
+        <div id="companyPriceInfo" class="col col-sm-4">
+            <div id="lastPrice" [ngClass]="{'positive' : quote.d >= 0,'negative' : quote.d < 0}">{{quote.c | number:'1.2-2'}}</div>
+            <div id="change" [ngClass]="{'positive' : quote.d >= 0,'negative' : quote.d < 0}">
+                <i class="bi" [ngClass]="{'bi-caret-up-fill' : quote.d >= 0,'bi-caret-down-fill' : quote.d < 0}"></i>
+                {{quote.d | number:'1.2-2'}} ({{quote.dp | number:'1.2-2'}}%)
+            </div>
+            <div id="timestamp">{{getCurrentTime() | date:'yyyy-MM-dd HH:mm:ss'}}</div>
+        </div>
+    </div>
+    <div id="marketStatus" [ngClass]="{'positive' : marketOpen,'negative' : !marketOpen}">{{getMarketStatusMsg()}}</div>
+</div>

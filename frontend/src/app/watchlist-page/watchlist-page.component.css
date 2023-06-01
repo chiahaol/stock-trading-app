@@ -1,0 +1,73 @@
+#watchlistPage {
+    position: absolute;
+    top: 80px;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+#cardArea {
+    margin-bottom: 70px;
+}
+
+#cardList {
+    margin: auto;
+    padding: 0;
+}
+
+#watchlistText {
+    display: flex;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 40px auto 40px auto;
+    padding: 0;
+}
+
+.cardContent {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    width: 100%;
+    padding: 0;
+}
+
+.cardName {
+    text-align: left;
+    padding: 10px;
+}
+
+.cardPrice {
+    text-align: right;
+    padding: 10px;
+}
+
+.positive {
+    color: #44a044;
+}
+
+.negative {
+    color: #fd0808;
+}
+
+.first-row {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.second-row {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+app-cancellable-card {
+    margin: 10px auto 10px auto;
+}
+
+app-cancellable-card:hover {
+    cursor: pointer;
+}
+
+.emptyAlert {
+    margin: 0 auto 0 auto;
+    text-align: center;
+}

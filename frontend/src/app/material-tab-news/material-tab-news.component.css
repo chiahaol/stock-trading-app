@@ -1,0 +1,99 @@
+#newsContent {
+    margin-top: 25px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.newsCard {
+    
+}
+.newsBlock {
+    background-color: white;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    margin: 15px;
+    display: flex;
+}
+
+.newsBlock:hover {
+    cursor: pointer;
+}
+
+.newsImage {
+    width: 100px;
+    height: 60px;
+    margin: 18px;
+}
+
+.newsTitle {
+    margin-top: 15px;
+    margin-right: 10px;
+}
+
+@media (max-width: 480px) {
+    .newsImage {
+        width: 90%;
+        height: 60%;
+        margin: 18px auto auto auto;
+    }
+
+    .newsBlock {
+        flex-direction: column;
+        justify-content: center;
+        height: 260px;
+    }
+
+    .newsTitle {
+        margin: auto 18px auto 18px;
+    }
+    
+}
+
+.modal-header {
+    font-size: 18px;
+}
+
+.postDate {
+    color: #6b747c;
+    font-size: 12px;
+}
+
+.modal-body {
+    margin-top: 10px;
+}
+
+.newsHeader {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.moreDetails {
+    color: #6b747c !important;
+}
+
+.shareBlock {
+    margin-top: 30px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    padding: 20px;
+}
+.closeBtn {
+    color: #6b747c;
+    margin: 0 5px auto auto;
+    font-weight: 500;
+    background-color: transparent;
+    border: none;
+}
+
+.shareBtns {
+    margin-top: 20px;
+    display: flex;
+}
+
+.share-logo {
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+}

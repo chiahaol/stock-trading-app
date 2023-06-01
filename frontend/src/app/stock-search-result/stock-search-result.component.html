@@ -1,0 +1,11 @@
+<div id="searchResult" class="container" *ngIf="!isSearching">
+    <app-stock-details [profile]="profile" [quote]="quote" [marketOpen]="marketOpen"></app-stock-details>
+    <app-material-tabs-panel
+        [profile]="profile"
+        [quote]="quote"
+        [companyPeers]="companyPeers"
+        [news]="news"
+        [marketOpen]="marketOpen"
+        ></app-material-tabs-panel>
+</div>
+

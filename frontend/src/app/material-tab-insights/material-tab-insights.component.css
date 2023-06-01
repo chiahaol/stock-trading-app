@@ -1,0 +1,40 @@
+#insightTabContent {
+    margin-bottom: 60px;
+}
+
+.sentimentTitle {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#socialSentimentChart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-top: 40px;
+}
+
+table {
+    margin: 30px auto 30px auto;
+}
+
+table th {
+    background-color: #e9ecef;
+    border-bottom: solid 1px #dee2e6;
+    border-top: solid 1px #dee2e6;
+    border-collapse: collapse;
+    padding: 10px;
+}
+
+table td {
+    border-bottom: solid 1px #dee2e6;
+    border-top: solid 1px #dee2e6;
+    border-collapse: collapse;
+    padding: 10px;
+}
+
+
+.twoCharts {
+    display: flex;
+}

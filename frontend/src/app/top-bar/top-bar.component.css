@@ -1,0 +1,31 @@
+#myTopBar {
+    background-color: #2224ab;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+}
+
+.my-nav-title {
+    color: white !important;
+}
+
+#my-nav-items {
+    display: flex;
+    margin: auto 20px auto auto;
+    text-align: right;
+}
+
+.my-nav-link {
+    color: white !important;
+    opacity: 40%;
+    margin-right: 10px;
+    margin-left: auto;
+    padding: 5px;
+}
+
+.isSelected {
+    opacity: 100%;
+    border: solid 1px white;
+    border-radius: 10px;
+}

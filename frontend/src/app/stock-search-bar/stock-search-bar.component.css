@@ -1,0 +1,68 @@
+#stockSearchText {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 40px auto 40px auto;
+}
+
+#mySearchForm {
+    text-align: center;
+}
+
+#mySearchBarArea {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 40px auto 40px auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: solid #2224ab;
+    border-width: 3px;
+    border-radius: 20px;
+    z-index: 20;
+}
+
+#searchInput {
+    width: 100%;
+    margin-left: 0;
+    margin-right: auto;
+    border: none;
+}
+
+#searchInput:focus {
+    outline: none;
+}
+
+#mySearchBtn {
+    margin-right: -5px;
+}
+
+#myCancelBtn {
+   font-size: 25px;
+   margin-right: -8px;
+}
+
+.mySearchBarBtn {
+    color: #2224ab;
+    background-color: transparent;
+    border: none;
+}
+
+.myOption{
+   float: left;
+}
+
+.myOption a {
+    font-size: 12px;
+ }
+
+.invalidInputAlert {
+     text-align: center;
+     background-color: #f8d7da;
+}
+
+.searchLoadingSpinner {
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+}

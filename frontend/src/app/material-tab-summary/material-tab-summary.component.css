@@ -1,0 +1,71 @@
+#summaryContent {
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+#summaryInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.summaryTitle {
+    color: black !important;
+    font-weight: bold;
+}
+
+#aboutCompanyText {
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: underline;
+    text-align: center; 
+    margin-top: 40px;
+}
+
+#companyUrl {
+    text-decoration: none;
+}
+
+#companyUrl:hover {
+    text-decoration: underline;
+}
+
+.peers {
+    color: #0d6efd !important;
+}
+
+.peers:hover {
+    text-decoration: underline !important;
+    cursor: pointer;
+}
+
+#prices {
+  text-align: left;
+  margin-left: 60px;
+  color: #6b747c;
+  width: max-content;
+}
+
+#about {
+    text-align: left;
+    margin-top: 40px;
+    margin-left: 30px;
+    color: #6b747c;
+}
+
+.aboutItem {
+    margin-bottom: 12px;
+}
+
+@media (max-width: 480px) {
+    #prices {
+        margin: auto;
+    }
+}
+
+.highcharts-title {
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -1,0 +1,30 @@
+<div id="mySearch" class="container">
+    <div id="stockSearchText">STOCK SEARCH</div>
+    <form id="mySearchForm" class="search-form" (submit)="$event.preventDefault()">
+          <div id="mySearchBarArea" class="col-8 col-sm-6 col-md-4">
+            <input #queryString id="searchInput" placeholder="Enter stock ticker symbol" type="text" [formControl]="myControl" [matAutocomplete]="auto">
+            <button id="mySearchBtn" class="mySearchBarBtn" type="submit" (click)="submitQuery(queryString.value)">
+                <i class="bi bi-search"></i>
+            </button>
+            <button id="myCancelBtn" class="mySearchBarBtn" type="reset" (click)="myClear()">
+                <i class="bi bi-x"></i>
+            </button>
+          </div>
+          
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngIf="loadingAutocomplete" class="is-loading">
+                <mat-spinner diameter="25"></mat-spinner>
+            </mat-option>
+            <mat-option *ngFor="let option of filteredOptions" [value]="option" (click)="submitQuery(option.symbol)">
+                <span class="myOption">{{option.symbol}}<a> | {{option.description}}</a></span>
+            </mat-option>
+          </mat-autocomplete>
+    </form>
+    <div class="searchLoadingSpinner" *ngIf="isSearching"><mat-spinner diameter="50"></mat-spinner></div>
+    <ngb-alert  class="invalidInputAlert" *ngIf="emptyInput" (closed)="emptyInput = false">
+        Please enter a valid ticker.
+    </ngb-alert>
+    <ngb-alert  class="invalidInputAlert" *ngIf="stockNotFound" [dismissible]="false">
+        No data found. Please enter a valid ticker.
+    </ngb-alert>     
+</div>

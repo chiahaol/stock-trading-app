@@ -1,0 +1,23 @@
+.myCard {
+    position: relative;
+    background-color: white;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    text-align: right;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.cancelBtn {
+    color: #6b747c;
+    margin: 5px 5px auto auto;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: transparent;
+    border: none;
+}
+
+.hide {
+    display: none;
+}
+

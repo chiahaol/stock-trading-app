@@ -1,0 +1,163 @@
+#portfolioPage {
+    position: absolute;
+    top: 80px;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+#cardArea {
+    margin-bottom: 70px;
+}
+
+#cardList {
+    margin: auto;
+    padding: 0;
+}
+
+#portfolioText {
+    display: flex;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 40px auto 40px auto;
+    padding: 0;
+}
+
+#currentMoneyText {
+    display: flex;
+    font-size: 25px;
+    font-weight: 400;
+    margin: 40px auto 20px auto;
+    padding: 0;
+}
+
+.portfolioObj {
+    border: 1px solid #ebebeb;
+    border-radius: 3px;
+    background-color: #f7f7f7;
+    margin: 10px auto 10px auto;
+}
+
+.portfolioContent {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    width: 100%;
+    padding: 0;
+    margin: auto 0 auto 0;
+    font-size: 20px;
+    padding: 15px 10px 15px 10px; 
+}
+
+.stockName {
+    margin: 13px;
+}
+
+.ticker {
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.name {
+    font-size: 20px;
+    font-weight: 400;
+    color: #848d9a !important;
+}
+
+.stats {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.val {
+    margin-right: 0;
+    margin-left: auto;
+}
+
+.positive {
+    color: #44a044 !important;
+}
+
+.negative {
+    color: #fd0808 !important;
+}
+
+.buy-sell-btn {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 15px 10px auto;
+    justify-content: flex-end;
+}
+
+.btn-sell {
+    margin-left: 10px;
+}
+
+.modal-header {
+    font-size: 18px;
+}
+
+.modal-body {
+    margin-left: 15px;
+}
+
+.quantity-form {
+    display: flex;
+    margin-top: 5px;
+}
+
+.quantity-label {
+    margin: auto 10px auto auto;
+}
+
+.closeBtn {
+    color: #6b747c;
+    margin: 0 5px auto auto;
+    font-weight: 500;
+    background-color: transparent;
+    border: none;
+}
+
+.emptyAlert {
+    margin: 0 auto 0 auto;
+    text-align: center;
+}
+
+.buySuccessAlert {
+    margin: 0 auto 0 auto;
+    background-color: #d4edda;
+    text-align: center;
+}
+
+.sellSuccessAlert {
+    margin: 0 auto 0 auto;
+    background-color: #f8d7da;
+    text-align: center;
+}
+
+.refreshingSpinner {
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+}
+
+.modalBtn {
+    border-radius: 3px;
+    border: none;
+    padding: 5px;
+    color: white;
+    width: 46px;
+    font-size: 12px;
+    background-color: #28a745;
+}
+
+.modalBtn:disabled {
+    opacity: 30%;
+}
+
+.modal-error {
+    color: red;
+}
+
+.total-msg {
+    margin: auto auto auto 0;
+}
